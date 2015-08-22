@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822221957) do
+ActiveRecord::Schema.define(version: 20150822222908) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150822221957) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "org_id"
+    t.string   "org_id_number"
     t.float    "avg_class_size"
   end
 
