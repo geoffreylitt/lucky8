@@ -13,17 +13,13 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'thin'
-<<<<<<< HEAD
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
 gem 'gon'
 
-||||||| merged common ancestors
-=======
 gem 'materialize-sass'
 
->>>>>>> 367a8f5e9529ddc1c010424a810b224181691101
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
