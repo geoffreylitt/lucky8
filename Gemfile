@@ -14,6 +14,11 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'thin'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gon'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
