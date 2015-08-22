@@ -19,6 +19,11 @@ module Lucky8
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Disable strong params for convenience
     config.action_controller.permit_all_parameters = true
+
+    # Active admin assets get manually precompiled
+    config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
   end
 end
