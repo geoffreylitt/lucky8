@@ -1,6 +1,18 @@
-%h1 Welcome to Lucky8!
+.row
+  .col-md-12
 
-- if !user_signed_in?
-  = link_to "Sign in", new_user_session_path, class: "btn btn-primary"
-- else
-  = link_to "View my Lucky 8", user_path(current_user), class: "btn btn-primary"
+
+
+.row
+  .col-md-12
+    - if !user_signed_in?
+      %h1 Hi there!
+      %p
+        My name is Lucky, and I'll be your guide to choosing your high schools! Are you a...
+      %p
+        = link_to "student", new_user_session_path(user_type: "student"), class: "btn btn-primary"
+        = link_to "family member", new_user_session_path(user_type: "family"), class: "btn btn-primary"
+        = link_to "teacher", new_user_session_path(user_type: "teacher"), class: "btn btn-primary"
+    - else
+      %h1 Hi there!
+      = link_to "View my Lucky 8", user_path(current_user), class: "btn btn-primary"

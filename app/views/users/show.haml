@@ -1,13 +1,15 @@
-%h3 User
-- if @user.name
-  %p= @user.name
-- if @user.email
-  %p= @user.email
+.row
+  .col-md-12
+    %h3 User
+    - if @user.name
+      %p= @user.name
+    - if @user.email
+      %p= @user.email
 
-%h3 Saved schools
-- if @user.schools.present?
-  %ul
-    - @user.schools.each do |school|
-      %li
-        = link_to school.name, school
+    %h3 Saved schools
+    - if @user.schools.present?
+      %ul
+        - @user.schools.each do |school|
+          %li
+            = link_to school.name, school
 
