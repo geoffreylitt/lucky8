@@ -11,10 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822192103) do
+ActiveRecord::Schema.define(version: 20150822194331) do
+
+  create_table "school_types", id: false, force: true do |t|
+    t.integer "school_id"
+    t.integer "type_id"
+  end
+
+  add_index "school_types", ["school_id"], name: "index_school_types_on_school_id"
+  add_index "school_types", ["type_id"], name: "index_school_types_on_type_id"
 
   create_table "schools", force: true do |t|
     t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "hours"
+    t.text     "how_to_apply"
+    t.text     "about"
+    t.integer  "four_yr_graduated"
+    t.integer  "four_yr_dropped_out"
+    t.integer  "four_yr_still_in_school"
+    t.integer  "four_yr_ged"
+    t.integer  "post_grad_four_yr_college"
+    t.integer  "post_grad_two_yr_college"
+    t.integer  "post_grad_unknown"
+    t.integer  "school_size_9_grade"
+    t.integer  "school_size_10_grade"
+    t.integer  "school_size_11_grade"
+    t.integer  "school_size_12_grade"
+    t.integer  "school_size_unknown"
+    t.integer  "other_key_indic_attendance_rate"
+    t.integer  "other_key_indic_sp_education"
+    t.integer  "other_key_indic_stud_teach_ratio"
+    t.integer  "school_population_hispanic"
+    t.integer  "school_population_african_american"
+    t.integer  "school_population_white"
+    t.integer  "school_population_asian"
+    t.integer  "school_population_multi_race_non_hispanic"
+    t.integer  "mcas_ela_advanced"
+    t.integer  "mcas_ela_proficient"
+    t.integer  "mcas_ela_needs_improv"
+    t.integer  "mcas_ela_fail"
+    t.integer  "mcas_math_advanced"
+    t.integer  "mcas_math_proficient"
+    t.integer  "mcas_math_needs_improv"
+    t.integer  "mcas_math_fail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +67,12 @@ ActiveRecord::Schema.define(version: 20150822192103) do
 
   add_index "schools_users", ["school_id", "user_id"], name: "index_schools_users_on_school_id_and_user_id"
   add_index "schools_users", ["user_id", "school_id"], name: "index_schools_users_on_user_id_and_school_id"
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
