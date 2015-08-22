@@ -1,2 +1,115 @@
 = link_to "< View all schools", schools_path
-%h1= @school.name
+
+.row
+  .col.s12.l6
+    .card
+      .card-image
+        =image_tag @school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
+        %span.card-title= @school.name
+      .card-content
+        %p= @school.about
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text 4 Year Graduation Rate
+        %p
+          %ul
+            %li
+              Graduated:
+              =@school.four_yr_graduated
+              \%
+            %li
+              Dropped out:
+              =@school.four_yr_dropped_out
+              \%
+            %li
+              Still in school:
+              =@school.four_yr_still_in_school
+              \%
+            %li
+              GED:
+              =@school.four_yr_ged
+              \%
+.row
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text Post-graduate intentions
+        %p
+          %ul
+            %li
+              Four-year college
+              =@school.post_grad_four_yr_college
+              \%
+            %li
+              Two-year college
+              =@school.post_grad_two_yr_college
+              \%
+            %li
+              Unknown
+              =@school.post_grad_unknown
+              \%
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text School size by grade
+        %p
+          %ul
+            %li
+              9th grade:
+              =@school.school_size_9_grade
+            %li
+              10th grade:
+              =@school.school_size_10_grade
+            %li
+              11th grade:
+              =@school.school_size_11_grade
+            %li
+              12th grade:
+              =@school.school_size_12_grade
+.row
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text Other key indicators
+        %p
+          %ul
+            %li
+              Attendance rate
+              =@school.other_key_indic_attendance_rate
+              \%
+            %li
+              Special education
+              =@school.other_key_indic_sp_education
+              \%
+            %li
+              Student-teacher ratio
+              =@school.other_key_indic_stud_teach_ratio
+              to 1
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text School population
+        %p
+          %ul
+            %li
+              Hispanic
+              =@school.school_population_hispanic
+              \%
+            %li
+              African American
+              =@school.school_population_african_american
+              \%
+            %li
+              White
+              =@school.school_population_white
+              \%
+            %li
+              Asian
+              =@school.school_population_asian
+              \%
+            %li
+              Multi-race, Non-Hispanic
+              =@school.school_population_multi_race_non_hispanic
+              \%
+
