@@ -3,6 +3,6 @@
   - if current_user.admin?
     %li= link_to "View all students", users_path
   - else
-    %li= link_to "Lucky 8", user_path(current_user)
+    %li= link_to "My Lucky 8", user_path(current_user)
 - else
   %li= link_to "Sign in", new_user_session_path
