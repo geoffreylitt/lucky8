@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 20150822223233) do
     t.float    "post_grad_four_yr_college"
     t.float    "post_grad_two_yr_college"
     t.float    "post_grad_unknown"
-    t.float    "school_size_9_grade"
-    t.float    "school_size_10_grade"
-    t.float    "school_size_11_grade"
-    t.float    "school_size_12_grade"
+    t.integer  "school_size_9_grade"
+    t.integer  "school_size_10_grade"
+    t.integer  "school_size_11_grade"
+    t.integer  "school_size_12_grade"
     t.float    "school_size_unknown"
     t.float    "other_key_indic_attendance_rate"
     t.float    "other_key_indic_sp_education"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20150822223233) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "org_id_number"
+    t.float    "avg_class_size"
   end
 
   create_table "schools_users", id: false, force: true do |t|

@@ -7,13 +7,13 @@
   %thead
     %tr
       %th Name
-      %th 9th grade class size
+      %th Average class size
       %th Graduation rate
       %th
   %tbody
     - @schools.each do |school|
       %tr
         %td= school.name
-        %td= school.school_size_9_grade
+        %td= school.avg_class_size
         %td= school.four_yr_graduated
         %td= link_to "More info", school

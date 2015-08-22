@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'activeadmin', github: 'activeadmin'
 gem 'rails', '4.1.5'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -9,16 +9,21 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'thin'
+<<<<<<< HEAD
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
 gem 'gon'
 
+||||||| merged common ancestors
+=======
+gem 'materialize-sass'
+
+>>>>>>> 367a8f5e9529ddc1c010424a810b224181691101
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]
