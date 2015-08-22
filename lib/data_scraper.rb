@@ -55,29 +55,39 @@ class DataScraper
     two_year_public = process_postgrad_row(doc, "2-Year Public College")
     unknown = process_postgrad_row(doc, "Unknown")
 
-    set_field_if_nil(:post_grad_four_yr_college, four_year_private + four_year_public)
-    set_field_if_nil(:post_grad_two_yr_college, two_year_private + two_year_public)
+    if four_year_private && four_year_public
+      set_field_if_nil(:post_grad_four_yr_college, four_year_private + four_year_public)
+    end
+
+    if two_year_private && two_year_public
+      set_field_if_nil(:post_grad_two_yr_college, two_year_private + two_year_public)
+    end
+
     set_field_if_nil(:post_grad_unknown, unknown)
   end
 
   # Take in a postgrad intentions page and a row title.
   # Return the first number in the row, which corresponds to school number.
   def process_postgrad_row(doc, row_name)
-    doc.
-      css("td").
-      select{ |td| td.text.strip == row_name }.
-      first.
-      parent.
-      css("td")[1].
-      text.
-      strip.
-      to_f
+    begin
+      doc.
+        css("td").
+        select{ |td| td.text.strip == row_name }.
+        first.
+        parent.
+        css("td")[1].
+        text.
+        strip.
+        to_f
+   rescue
+    nil
+   end
   end
 
   # Set a field only if the current value is nil.
   # This avoids overwriting manually entered fields.
   def set_field_if_nil(field, value)
-    if @school.send(field).nil?
+    if @school.send(field).nil? && !value.nil?
       @school.update_attribute(field, value)
     end
   end
