@@ -13,6 +13,7 @@ class DataScraper
     scrape_general
     scrape_grad_rates
     scrape_postgrad_intentions
+    scrape_school_size
 
     @school.save!
   end
@@ -64,6 +65,37 @@ class DataScraper
     end
 
     set_field_if_nil(:post_grad_unknown, unknown)
+  end
+
+  def scrape_school_size_and_race
+    doc = Nokogiri::HTML(open("http://profiles.doe.mass.edu/profiles/student.aspx?orgcode=#{@id}&orgtypecode=6&"))
+
+    # Scrape school size by grade
+
+    enrollment_table = doc.css("th").select do |th|
+      th.text.strip.include? "Enrollment by Grade"
+    end.first.parent.parent.parent
+
+    nums = enrollment_table.css("tr").last.css("td").map{ |td| td.text.strip }
+
+    set_field_if_nil(:school_size_9_grade, nums[11].to_i)
+    set_field_if_nil(:school_size_10_grade, nums[12].to_i)
+    set_field_if_nil(:school_size_11_grade, nums[13].to_i)
+    set_field_if_nil(:school_size_12_grade, nums[14].to_i)
+    set_field_if_nil(:school_size_unknown, nums[16].to_i)
+
+    # Scrape demographic breakdown
+
+    race_table = doc.css("th").select do |th|
+      th.text.strip.include? "Race/Ethnicity"
+    end.first.parent.parent.parent
+
+    race_table.css("tr").each do |tr|
+      case tr.css("td").first.text.strip
+      when "African American"
+        set_field_if_nil(:school_population_african_american, tr.css("td").second.text.strip)
+    end
+
   end
 
   # Take in a postgrad intentions page and a row title.
