@@ -25,5 +25,7 @@ module Lucky8
 
     # Active admin assets get manually precompiled
     config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
+
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
