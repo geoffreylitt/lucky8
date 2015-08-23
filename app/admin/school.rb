@@ -5,8 +5,6 @@ ActiveAdmin.register School do
     actions
   end
 
-  permit_params tag_ids: []
-
   form do |f|
     f.inputs
     f.input :tags, :as => :check_boxes, :input_html => {:multiple => true}
