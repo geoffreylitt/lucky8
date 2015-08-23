@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822223233) do
+ActiveRecord::Schema.define(version: 20150823002552) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(version: 20150822223233) do
     t.float    "longitude"
   end
 
+  create_table "schools_tags", id: false, force: true do |t|
+    t.integer "school_id", null: false
+    t.integer "tag_id",    null: false
+  end
+
+  add_index "schools_tags", ["school_id", "tag_id"], name: "index_schools_tags_on_school_id_and_tag_id"
+  add_index "schools_tags", ["tag_id", "school_id"], name: "index_schools_tags_on_tag_id_and_school_id"
+
   create_table "schools_users", id: false, force: true do |t|
     t.integer "school_id", null: false
     t.integer "user_id",   null: false
@@ -105,6 +113,12 @@ ActiveRecord::Schema.define(version: 20150822223233) do
 
   add_index "schools_users", ["school_id", "user_id"], name: "index_schools_users_on_school_id_and_user_id"
   add_index "schools_users", ["user_id", "school_id"], name: "index_schools_users_on_user_id_and_school_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "types", force: true do |t|
     t.string   "name"
