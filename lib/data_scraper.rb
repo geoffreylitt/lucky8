@@ -143,6 +143,7 @@ class DataScraper
   # For all schools in the db, pull newest data from the Mass DESE site
   def self.scrape_all
     School.all.each do |school|
+      puts "Scraping data for #{school.name}..."
       DataScraper.new(school).scrape
     end
   end
