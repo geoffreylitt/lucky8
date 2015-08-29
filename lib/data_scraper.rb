@@ -147,7 +147,7 @@ class DataScraper
   end
 
   # Finds a table row with a given label on a web page,
-  # and returns a number from that row.
+  # and returns a Float representation of a number from that row.
   #
   # @param doc [Nokogiri::HTML::Document] Nokogiri doc with the webpage
   # @param row_name [String] Label for the table row
@@ -157,19 +157,20 @@ class DataScraper
   #                                   table cell to get a result (default to_f)
   #
   # Not using ruby 2.1 so use this hack to get required keyword args
-  def scrape_table_row(doc: doc, row_name: row_name, column: 1, conversion_method: :to_f)
+  def scrape_table_row(doc: doc, row_name: row_name, column: 1)
     # lazy error handling here, just return nil if anything goes wrong
     # (if the table row isn't found, etc etc)
     begin
-      doc.
+      cell_text = doc.
         css("td").
         select{ |td| td.text.strip == row_name }.
         first.
         parent.
         css("td")[column].
         text.
-        strip.
-        send(conversion_method)
+        strip
+
+      Float(cell_text)
     rescue
       nil
     end
