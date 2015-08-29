@@ -9,6 +9,13 @@
         %span.card-title.grey-text.text-darken-4= @school.name
         %p= @school.about
   .col.s12.l6
+    - if @geocoded_hash.any?
+      .card
+        .card-content
+          %span.card-title.orange-text Location
+          %p
+            #map-view
+              #map
     .card
       .card-content
         %span.card-title.orange-text 4 Year Graduation Rate
@@ -30,11 +37,6 @@
               GED:
               =@school.four_yr_ged
               \%
-    .card
-      .card-content
-        %span.card-title.orange-text Location
-        %p
-          #map{style: 'width: 100%; height: 200px;'}
 
 .row
   .col.s12.l6
