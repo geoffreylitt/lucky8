@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   def index
+    @show = params[:show]
     @schools = School.all
 
     schools_with_location = @schools.where.not(latitude: nil)

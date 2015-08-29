@@ -19,7 +19,9 @@
         = yield
   :javascript
     $(document).on("page:change", function() {
-      var mapOptions = { maxZoom:15 }
+      var mapOptions = {
+        maxZoom: 16,
+      }
       var handler = Gmaps.build('Google');
         handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
           markers = handler.addMarkers(#{@geocoded_hash.to_json});
