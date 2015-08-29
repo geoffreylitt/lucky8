@@ -19,15 +19,13 @@
         = yield
   :javascript
     $(document).on("page:change", function() {
-      if($("body").attr("data-action") == "map") {
-        var mapOptions = { maxZoom: 16 }
-        var handler = Gmaps.build('Google');
-          handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
-            markers = handler.addMarkers(#{@geocoded_hash.to_json});
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-          });
-      }
+      var mapOptions = { maxZoom: 16 }
+      var handler = Gmaps.build('Google');
+        handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers(#{@geocoded_hash.to_json});
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
 
       $("#list-show-link").click(function(){
         location.href = "#{list_schools_url}";

@@ -9,13 +9,15 @@
         %span.card-title.grey-text.text-darken-4= @school.name
         %p= raw @school.about
   .col.s12.l6
-    - if @geocoded_hash.any?
+    - if @school.address
       .card
         .card-content
           %span.card-title.orange-text Location
-          %p
-            #map-view
-              #map
+          - if @geocoded_hash.any?
+            %p
+              #small-map-view
+                #map
+          %p= @school.address
     .card
       .card-content
         %span.card-title.orange-text 4 Year Graduation Rate
