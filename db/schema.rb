@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823002552) do
+ActiveRecord::Schema.define(version: 20150829165055) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,14 +45,6 @@ ActiveRecord::Schema.define(version: 20150823002552) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-
-  create_table "school_types", id: false, force: true do |t|
-    t.integer "school_id"
-    t.integer "type_id"
-  end
-
-  add_index "school_types", ["school_id"], name: "index_school_types_on_school_id"
-  add_index "school_types", ["type_id"], name: "index_school_types_on_type_id"
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -92,10 +84,10 @@ ActiveRecord::Schema.define(version: 20150823002552) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
     t.string   "org_id_number"
     t.float    "avg_class_size"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "schools_tags", id: false, force: true do |t|
@@ -105,6 +97,14 @@ ActiveRecord::Schema.define(version: 20150823002552) do
 
   add_index "schools_tags", ["school_id", "tag_id"], name: "index_schools_tags_on_school_id_and_tag_id"
   add_index "schools_tags", ["tag_id", "school_id"], name: "index_schools_tags_on_tag_id_and_school_id"
+
+  create_table "schools_types", id: false, force: true do |t|
+    t.integer "school_id"
+    t.integer "type_id"
+  end
+
+  add_index "schools_types", ["school_id"], name: "index_schools_types_on_school_id"
+  add_index "schools_types", ["type_id"], name: "index_schools_types_on_type_id"
 
   create_table "schools_users", id: false, force: true do |t|
     t.integer "school_id", null: false
