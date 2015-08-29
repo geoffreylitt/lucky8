@@ -7,7 +7,7 @@
         =image_tag @school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
       .card-content
         %span.card-title.grey-text.text-darken-4= @school.name
-        %p= @school.about
+        %p= raw @school.about
   .col.s12.l6
     - if @geocoded_hash.any?
       .card
@@ -120,4 +120,10 @@
               Multi-race, Non-Hispanic
               =@school.school_population_multi_race_non_hispanic
               \%
+.row
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title.orange-text How to apply
+        %p= raw @school.how_to_apply
 

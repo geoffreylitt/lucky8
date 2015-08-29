@@ -31,8 +31,10 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 Getting Started
 ---------------
 ### Running the scraper
+
+This rake task scrapes new stats for all schools from the Mass DESE website.
 ```
-DataScraper.scrape_all
+$ rake scrape
 ```
 
 

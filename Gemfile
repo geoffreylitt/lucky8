@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_admin_editor'
 gem 'rails', '4.1.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

@@ -17,3 +17,7 @@
 @import "materialize/components/color";
 $primary-color: #0057A6 !default;
 @import 'materialize';
+
+.container {
+  width: 100%;
+}
