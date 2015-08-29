@@ -1,6 +1,15 @@
+%ul.tabs
+  %li.tab.col.s6
+    = link_to "#",
+      id: "list-show-link",
+      class: :active do
+      List
+  %li.tab.col.s6
+    = link_to "#",
+      id: "map-show-link" do
+      Map
+
 .row#main-row
-  #map-view.col.s12
-    #map
   #list-view.col.s12
     %table.table.table-striped
       %thead
@@ -16,3 +25,4 @@
             %td= school.avg_class_size
             %td= school.four_yr_graduated
             %td= link_to "More info", school
+

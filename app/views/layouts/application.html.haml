@@ -10,7 +10,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     = csrf_meta_tags
-  %body
+  %body{ data: { controller: controller.controller_name, action: controller.action_name }}
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
@@ -19,13 +19,21 @@
         = yield
   :javascript
     $(document).on("page:change", function() {
-      var mapOptions = {
-        maxZoom: 16,
+      if($("body").attr("data-action") == "map") {
+        var mapOptions = { maxZoom: 16 }
+        var handler = Gmaps.build('Google');
+          handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
+            markers = handler.addMarkers(#{@geocoded_hash.to_json});
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+          });
       }
-      var handler = Gmaps.build('Google');
-        handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
-          markers = handler.addMarkers(#{@geocoded_hash.to_json});
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-        });
+
+      $("#list-show-link").click(function(){
+        location.href = "#{list_schools_url}";
+      });
+
+      $("#map-show-link").click(function(){
+        location.href = "#{map_schools_url}";
+      });
     });

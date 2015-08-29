@@ -1,0 +1,15 @@
+%ul.tabs
+  %li.tab.col.s6
+    = link_to "#",
+      id: "list-show-link" do
+      List
+  %li.tab.col.s6
+    = link_to "#",
+      id: "map-show-link",
+      class: :active do
+      Map
+
+.row#main-row
+  #map-view.col.s12
+    #map
+
