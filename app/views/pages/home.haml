@@ -1,18 +1,14 @@
 .row
-  .col-md-12
+  .col.s12.m6.offset-m3.l4.offset-l4
+    =image_tag "lucky.png", class: "lucky"
+    .center-align
+      %p.welcome-message
+        Hi there! My name is Lucky, and I'll be your guide to choosing your high schools in Boston!
 
-
-
-.row
-  .col-md-12
-    - if !user_signed_in?
-      %h1 Hi there!
       %p
-        My name is Lucky, and I'll be your guide to choosing your high schools! Are you a...
-      %p
-        = link_to "student", new_user_session_path(user_type: "student"), class: "btn btn-primary"
-        = link_to "family member", new_user_session_path(user_type: "family"), class: "btn btn-primary"
-        = link_to "teacher", new_user_session_path(user_type: "teacher"), class: "btn btn-primary"
-    - else
-      %h1 Hi there!
-      = link_to "View my Lucky 8", user_path(current_user), class: "btn btn-primary"
+        = link_to "Let's start >>", schools_path, class: "btn blue darken-4"
+
+    %footer
+      %p.center-align
+        by
+        =image_tag "citizen-logo.png", class: "citizen-logo"

@@ -1,15 +1,18 @@
-= link_to "< View all schools", schools_path
+.row
+  .col.s12
+    = link_to "< Back to list", schools_path, class: "back-link"
 
 .row
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
-      .card-image
+      .card-image.gradient
         =image_tag @school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
-      .card-content
-        %span.card-title.grey-text.text-darken-4= @school.name
-        %p= raw @school.about
-  .col.s12.l6
-    - if @school.address
+        %span.card-title= @school.name
+      - if @school.about
+        .card-content
+          %p= raw @school.about
+  - if @school.address
+    .col.s12.m6.l4
       .card
         .card-content
           %span.card-title.orange-text Location
@@ -18,6 +21,8 @@
               #small-map-view
                 #map
           %p= @school.address
+.row
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text 4 Year Graduation Rate
@@ -40,8 +45,7 @@
               =@school.four_yr_ged
               \%
 
-.row
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text Post-graduate intentions
@@ -59,7 +63,7 @@
               Unknown
               =@school.post_grad_unknown
               \%
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text School size by grade
@@ -78,7 +82,7 @@
               12th grade:
               =@school.school_size_12_grade
 .row
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text Other key indicators
@@ -98,7 +102,7 @@
                 ELL percentage
                 =@school.ell_percentage
                 \%
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text School population
@@ -124,8 +128,7 @@
               Multi-race, Non-Hispanic
               =@school.school_population_multi_race_non_hispanic
               \%
-.row
-  .col.s12.l6
+  .col.s12.m6.l4
     .card
       .card-content
         %span.card-title.orange-text How to apply

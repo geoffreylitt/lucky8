@@ -1,9 +1,0 @@
-- if user_signed_in?
-  - if current_user.admin?
-    %li= link_to "View all students", users_path
-  - else
-    %li= link_to "My Lucky 8", user_path(current_user)
-  %li= link_to "Sign out", destroy_user_session_path, method: "delete", class: "pull-right"
-- else
-  %li= link_to "Sign in", new_user_session_path
-%li= link_to "View all schools", schools_path
