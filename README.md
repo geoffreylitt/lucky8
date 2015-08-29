@@ -30,18 +30,11 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 Getting Started
 ---------------
+### Running the scraper
+```
+DataScraper.scrape_all
+```
 
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
 
 Credits
 -------
