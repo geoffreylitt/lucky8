@@ -27,6 +27,7 @@ group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'byebug'
 end
 group :development, :test do
   gem 'sqlite3'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829165055) do
+ActiveRecord::Schema.define(version: 20150829175202) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -65,9 +65,7 @@ ActiveRecord::Schema.define(version: 20150829165055) do
     t.integer  "school_size_11_grade"
     t.integer  "school_size_12_grade"
     t.float    "school_size_unknown"
-    t.float    "other_key_indic_attendance_rate"
-    t.float    "other_key_indic_sp_education"
-    t.float    "other_key_indic_stud_teach_ratio"
+    t.float    "attendance_rate"
     t.float    "school_population_hispanic"
     t.float    "school_population_african_american"
     t.float    "school_population_white"
@@ -88,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150829165055) do
     t.float    "avg_class_size"
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "ell_percentage"
   end
 
   create_table "schools_tags", id: false, force: true do |t|
