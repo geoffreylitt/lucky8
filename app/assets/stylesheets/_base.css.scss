@@ -97,6 +97,11 @@ footer {
     font-size: 48px;
   }
 
+  .percent-sign {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+
   .label {
     color: $grey-light;
   }
@@ -124,6 +129,7 @@ footer {
   border-right: solid thin #ddd;
   width: 23%;
   max-width: 70px;
+  vertical-align: top;
 
   &:last-of-type {
     border-right: none;

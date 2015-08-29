@@ -23,27 +23,29 @@
           %p= @school.address
 .row
   .col.s12.m6.l4
-    .card
-      .card-content.border-green
-        %span.card-title.orange-text 4 Year Graduation Rate
-        %p
-          %ul
-            %li
-              Graduated:
-              =@school.four_yr_graduated
-              \%
-            %li
-              Dropped out:
-              =@school.four_yr_dropped_out
-              \%
-            %li
-              Still in school:
-              =@school.four_yr_still_in_school
-              \%
-            %li
-              GED:
-              =@school.four_yr_ged
-              \%
+    .card.border-green
+      .card-content
+        .big-number
+          .little-card-title Graduation rate
+          %span.number= @school.four_yr_graduated
+          %span.percent-sign %
+          %span.label graduated
+        .card-icon
+          = image_tag "graduated.png"
+
+        .little-numbers
+          .little-number
+            .number= percentage(@school.four_yr_dropped_out)
+            .label
+              dropped out
+          .little-number
+            .number= percentage(@school.four_yr_still_in_school)
+            .label
+              still in school
+          .little-number
+            .number= percentage(@school.four_yr_ged)
+            .label
+              GED
 
   .col.s12.m6.l4
     .card.border-red
