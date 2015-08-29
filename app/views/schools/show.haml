@@ -87,73 +87,77 @@
                 %br
                 Grade
   .col.s12.m6.l4
+    .card.border-blue
+      .card-content
+        .big-number
+          .little-card-title Post-graduate intentions
+        .little-numbers
+          .little-number
+            .number= percentage(@school.post_grad_four_yr_college)
+            .label
+              Four-year college
+          .little-number
+            .number= percentage(@school.post_grad_two_yr_college)
+            .label
+              Two-year college
+          .little-number
+            .number= percentage(@school.post_grad_unknown)
+            .label
+              Unknown
+
+.row
+  .col.s12.m6.l4
     .card.border-red
       .card-content
-        %span.card-title.orange-text Post-graduate intentions
-        %p
-          %ul
-            %li
-              Four-year college
-              =@school.post_grad_four_yr_college
-              \%
-            %li
-              Two-year college
-              =@school.post_grad_two_yr_college
-              \%
-            %li
-              Unknown
-              =@school.post_grad_unknown
-              \%
-.row
+        .big-number
+          .little-card-title School population
+        .card-icon= image_tag "students.png"
+        .little-numbers
+          .little-number
+            .number= percentage(@school.school_population_hispanic)
+            .label
+              Hispanic
+          .little-number
+            .number= percentage(@school.school_population_african_american)
+            .label
+              African American
+          .little-number
+            .number= percentage(@school.school_population_white)
+            .label
+              White
+          .little-number
+            .number= percentage(@school.school_population_asian)
+            .label
+              Asian
+          .little-number
+            .number= percentage(@school.school_population_multi_race_non_hispanic)
+            .label
+              Multi-race, Non-Hispanic
+
   .col.s12.m6.l4
     .card.border-gold
       .card-content
-        %span.card-title.orange-text Other key indicators
-        %p
-          %ul
-            - if @school.attendance_rate
-              %li
-                Attendance rate
-                =@school.attendance_rate
-                \%
-            - if @school.avg_class_size
-              %li
-                Average class size
-                =@school.avg_class_size
-            - if @school.ell_percentage
-              %li
-                ELL percentage
-                =@school.ell_percentage
-                \%
-  .col.s12.m6.l4
-    .card.border-blue
-      .card-content
-        %span.card-title.orange-text School population
-        %p
-          %ul
-            %li
-              Hispanic
-              =@school.school_population_hispanic
-              \%
-            %li
-              African American
-              =@school.school_population_african_american
-              \%
-            %li
-              White
-              =@school.school_population_white
-              \%
-            %li
-              Asian
-              =@school.school_population_asian
-              \%
-            %li
-              Multi-race, Non-Hispanic
-              =@school.school_population_multi_race_non_hispanic
-              \%
-  .col.s12.m6.l4
-    .card.border-green
-      .card-content
-        %span.card-title.orange-text How to apply
-        %p= raw @school.how_to_apply
+        .big-number
+          .little-card-title Other key indicators
+        .little-numbers
+          .little-number.wide
+            .number= percentage(@school.attendance_rate)
+            .label
+              Attendance rate
+          .little-number.wide
+            .number= @school.avg_class_size
+            .label
+              Average class size
+          .little-number.wide
+            .number= percentage(@school.ell_percentage)
+            .label
+              ELL students
+
+  - if @school.how_to_apply.present?
+    .col.s12.m6.l4
+      .card.border-green
+        .card-content
+          .big-number
+            .little-card-title How to apply
+          %p= raw @school.how_to_apply
 
