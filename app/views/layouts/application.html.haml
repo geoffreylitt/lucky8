@@ -25,6 +25,7 @@
             markers = handler.addMarkers(#{@geocoded_hash.to_json});
             handler.bounds.extendWith(markers);
             handler.fitMapToBounds();
+            handler.getMap().setZoom(12);
           });
       }
 
