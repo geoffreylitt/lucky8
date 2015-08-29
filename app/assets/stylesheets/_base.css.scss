@@ -1,4 +1,9 @@
 $citizen-blue: #0057A6;
+$citizen-gold: #C7940D;
+$citizen-red: #B01C2E;
+$citizen-green: #00665C;
+
+$grey-light: #9B9B9B;
 
 .container {
   width: 100%;
@@ -56,3 +61,79 @@ footer {
   background-color: $citizen-blue;
 }
 
+// Citizen schools themed cards
+
+@mixin card-border($color) {
+  border-top: solid 4px $color;
+}
+
+.border-blue {
+  @include card-border($citizen-blue)
+}
+
+.border-gold {
+  @include card-border($citizen-gold)
+}
+
+.border-green {
+  @include card-border($citizen-green)
+}
+
+.border-red {
+  @include card-border($citizen-red)
+}
+
+.little-card-title {
+  font-size: 14px;
+  color: $grey-light;
+}
+
+.big-number {
+  display: inline-block;
+  width: 75%;
+  margin-bottom: 20px;
+
+  .number {
+    font-size: 48px;
+  }
+
+  .label {
+    color: $grey-light;
+  }
+
+  .icon {
+    text-align: right;
+  }
+}
+
+.card-icon {
+  display: inline-block;
+  text-align: right;
+  width: 23%;
+  vertical-align: top;
+
+  img {
+    width: 100%;
+    max-width: 70px;
+  }
+}
+
+.little-number {
+  display: inline-block;
+  text-align: center;
+  border-right: solid thin #ddd;
+  width: 23%;
+  max-width: 70px;
+
+  &:last-of-type {
+    border-right: none;
+  }
+
+  .number {
+    font-size: 20px;
+  }
+
+  .label {
+    color: $grey-light;
+  }
+}

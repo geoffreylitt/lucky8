@@ -13,7 +13,7 @@
           %p= raw @school.about
   - if @school.address
     .col.s12.m6.l4
-      .card
+      .card.border-blue
         .card-content
           %span.card-title.orange-text Location
           - if @geocoded_hash.any?
@@ -24,7 +24,7 @@
 .row
   .col.s12.m6.l4
     .card
-      .card-content
+      .card-content.border-green
         %span.card-title.orange-text 4 Year Graduation Rate
         %p
           %ul
@@ -46,7 +46,7 @@
               \%
 
   .col.s12.m6.l4
-    .card
+    .card.border-red
       .card-content
         %span.card-title.orange-text Post-graduate intentions
         %p
@@ -64,26 +64,43 @@
               =@school.post_grad_unknown
               \%
   .col.s12.m6.l4
-    .card
+    .card.border-gold
       .card-content
-        %span.card-title.orange-text School size by grade
-        %p
-          %ul
-            %li
-              9th grade:
-              =@school.school_size_9_grade
-            %li
-              10th grade:
-              =@school.school_size_10_grade
-            %li
-              11th grade:
-              =@school.school_size_11_grade
-            %li
-              12th grade:
-              =@school.school_size_12_grade
+        .big-number
+          .little-card-title School size
+          %span.number= @school.total_size
+          %span.label students
+        .card-icon
+          = image_tag "school.png"
+
+        .little-numbers
+          .little-number
+            .number= @school.school_size_9_grade
+            .label
+              9th
+              %br
+              Grade
+          .little-number
+            .number= @school.school_size_10_grade
+            .label
+              10th
+              %br
+              Grade
+          .little-number
+            .number= @school.school_size_11_grade
+            .label
+              11th
+              %br
+              Grade
+          .little-number
+            .number= @school.school_size_12_grade
+            .label
+              12th
+              %br
+              Grade
 .row
   .col.s12.m6.l4
-    .card
+    .card.border-gold
       .card-content
         %span.card-title.orange-text Other key indicators
         %p
@@ -103,7 +120,7 @@
                 =@school.ell_percentage
                 \%
   .col.s12.m6.l4
-    .card
+    .card.border-blue
       .card-content
         %span.card-title.orange-text School population
         %p
@@ -129,7 +146,7 @@
               =@school.school_population_multi_race_non_hispanic
               \%
   .col.s12.m6.l4
-    .card
+    .card.border-green
       .card-content
         %span.card-title.orange-text How to apply
         %p= raw @school.how_to_apply
