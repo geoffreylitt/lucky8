@@ -27,9 +27,9 @@ class DataScraper
       if columns.size >= 2
         case columns.first.text.strip
         when "Mailing Address:"
-          set_field_if_nil(:address, columns[1].text.strip)
+          set_field_if_blank(:address, columns[1].text.strip)
         when "Phone:"
-          set_field_if_nil(:phone, columns[1].text.strip)
+          set_field_if_blank(:phone, columns[1].text.strip)
         end
       end
     end
@@ -43,10 +43,10 @@ class DataScraper
       grad_rates_tr = grad_rates_tr_header.first.parent.parent.css("tr.ccc")
       rates = grad_rates_tr.css("td").map{ |td| td.text.strip.to_f }
 
-      set_field_if_nil(:four_yr_graduated, rates[2])
-      set_field_if_nil(:four_yr_still_in_school, rates[3])
-      set_field_if_nil(:four_yr_ged, rates[5])
-      set_field_if_nil(:four_yr_dropped_out, rates[6])
+      set_field_if_blank(:four_yr_graduated, rates[2])
+      set_field_if_blank(:four_yr_still_in_school, rates[3])
+      set_field_if_blank(:four_yr_ged, rates[5])
+      set_field_if_blank(:four_yr_dropped_out, rates[6])
     end
   end
 
@@ -60,14 +60,14 @@ class DataScraper
     unknown = process_postgrad_row(doc, "Unknown")
 
     if four_year_private && four_year_public
-      set_field_if_nil(:post_grad_four_yr_college, four_year_private + four_year_public)
+      set_field_if_blank(:post_grad_four_yr_college, four_year_private + four_year_public)
     end
 
     if two_year_private && two_year_public
-      set_field_if_nil(:post_grad_two_yr_college, two_year_private + two_year_public)
+      set_field_if_blank(:post_grad_two_yr_college, two_year_private + two_year_public)
     end
 
-    set_field_if_nil(:post_grad_unknown, unknown)
+    set_field_if_blank(:post_grad_unknown, unknown)
   end
 
   def scrape_school_size_and_race
@@ -84,11 +84,11 @@ class DataScraper
 
       nums = enrollment_table.css("tr").last.css("td").map{ |td| td.text.strip }
 
-      set_field_if_nil(:school_size_9_grade, nums[11].to_i)
-      set_field_if_nil(:school_size_10_grade, nums[12].to_i)
-      set_field_if_nil(:school_size_11_grade, nums[13].to_i)
-      set_field_if_nil(:school_size_12_grade, nums[14].to_i)
-      set_field_if_nil(:school_size_unknown, nums[16].to_i)
+      set_field_if_blank(:school_size_9_grade, nums[11].to_i)
+      set_field_if_blank(:school_size_10_grade, nums[12].to_i)
+      set_field_if_blank(:school_size_11_grade, nums[13].to_i)
+      set_field_if_blank(:school_size_12_grade, nums[14].to_i)
+      set_field_if_blank(:school_size_unknown, nums[16].to_i)
     end
 
     # Scrape demographic breakdown
@@ -106,11 +106,11 @@ class DataScraper
         end
       end
 
-      set_field_if_nil(:school_population_african_american, race_percentages["African American"])
-      set_field_if_nil(:school_population_asian, race_percentages["Asian"])
-      set_field_if_nil(:school_population_hispanic, race_percentages["Hispanic"])
-      set_field_if_nil(:school_population_white, race_percentages["White"])
-      set_field_if_nil(:school_population_multi_race_non_hispanic, race_percentages["Multi-Race, Non-Hispanic"])
+      set_field_if_blank(:school_population_african_american, race_percentages["African American"])
+      set_field_if_blank(:school_population_asian, race_percentages["Asian"])
+      set_field_if_blank(:school_population_hispanic, race_percentages["Hispanic"])
+      set_field_if_blank(:school_population_white, race_percentages["White"])
+      set_field_if_blank(:school_population_multi_race_non_hispanic, race_percentages["Multi-Race, Non-Hispanic"])
     end
   end
 
@@ -134,8 +134,8 @@ class DataScraper
 
   # Set a field only if the current value is nil.
   # This avoids overwriting manually entered fields.
-  def set_field_if_nil(field, value)
-    if @school.send(field).nil? && !value.nil?
+  def set_field_if_blank(field, value)
+    if @school.send(field).blank? && !value.nil?
       @school.update_attribute(field, value)
     end
   end
