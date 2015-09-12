@@ -53,7 +53,7 @@ class SchoolsController < ApplicationController
 
       redirect_to @school
     else
-      flash[:alert] = "You must be signed in to save schools."
+      flash[:alert] = "You'll need to sign in to save that school!"
       redirect_to new_user_session_path
     end
   end

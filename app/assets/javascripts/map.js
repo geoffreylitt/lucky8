@@ -13,7 +13,7 @@ var initMap = function () {
         "click",
         onMarkerClick(marker, event)
       )
-      
+
       return marker;
     });
 
@@ -46,7 +46,9 @@ var initMap = function () {
 
 $(document).ready(function() {
   $('ul.tabs').tabs();
-  initMap();
+  if($("#map").length > 0){
+    initMap();
+  }
 
   // When the map tab is clicked, poll every 100ms until the #map div is visible
   // and then render the map. This is hacky but works. Ideas for better ways:
