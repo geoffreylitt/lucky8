@@ -27,8 +27,19 @@ var initMap = function () {
     return function(event){
       $("#map-footer").show();
       $("#map-footer .card-content .name").text(marker.name);
-      $("#map-footer .card-content .grad-rate").text("4-yr Graduation Rate: " + marker.gradRate);
-      $("#map-footer .card-action .link").attr("href", "/schools/" + marker.id)
+      $("#map-footer .card-content .about").html(marker.about.substring(0, 90) + "...");
+
+      $("#map-footer .card-content .tags").html(
+        _.map(marker.tags, function(tag){
+          return("<a href='/schools?tag_id=" +
+            tag[0] +
+            "'>" +
+            tag[1] +
+            "</a>"
+          )}).join(" ")
+      );
+
+      $("#map-footer .card-action .link").attr("href", "/schools/" + marker.id);
     }
   }
 }

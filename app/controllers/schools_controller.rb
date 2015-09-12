@@ -19,7 +19,8 @@ class SchoolsController < ApplicationController
       marker.json({
         id: school.id,
         name: school.name,
-        gradRate: school.four_yr_graduated
+        about: school.about,
+        tags: school.tags.pluck(:id, :name)
       })
     end
   end
