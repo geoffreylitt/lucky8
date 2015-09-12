@@ -7,6 +7,6 @@
         - if !user_signed_in?
           %li= link_to "Sign in", new_user_session_path, class: "orange-text"
         - else
-          %li= link_to "View my Lucky 8", schools_path(starred: true)
-          %li= link_to "Sign out", destroy_user_session_path, method: :delete
+          %li= link_to "View my Lucky 8", schools_path(starred: true), class: "orange-text"
+          %li= link_to "Sign out", destroy_user_session_path, method: :delete, class: "orange-text"
 
