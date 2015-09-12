@@ -13,7 +13,7 @@
     = csrf_meta_tags
   %body{ data: { controller: controller.controller_name, action: controller.action_name, "no-turbolink" => true }}
     %main{:role => "main"}
+      = render 'layouts/navigation'
       .container
-        = render 'layouts/messages'
         = yield
 

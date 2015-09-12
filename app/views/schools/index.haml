@@ -1,6 +1,9 @@
 .row
   .col.s12
-    - if @tag
+    - if @starred
+      =link_to "< Back to all schools", schools_path
+      %h1 My Lucky 8
+    - elsif @tag
       =link_to "< Back to all schools", schools_path
       %h1= @tag.name
     - else
@@ -20,24 +23,27 @@
 
 .row#main-row
   #list-view.col.s12
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Average class size
-          %th Graduation rate
-          %th Tags
-          %th
-      %tbody
-        - @schools.each do |school|
+    -if @schools.count > 0
+      %table.table.table-striped
+        %thead
           %tr
-            %td= school.name
-            %td= school.avg_class_size
-            %td= school.four_yr_graduated
-            %td
-              - school.tags.each do |tag|
-                = link_to tag.name, schools_path(tag_id: tag.id)
-            %td= link_to "More info", school
+            %th Name
+            %th Average class size
+            %th Graduation rate
+            %th Tags
+            %th
+        %tbody
+          - @schools.each do |school|
+            %tr
+              %td= school.name
+              %td= school.avg_class_size
+              %td= school.four_yr_graduated
+              %td
+                - school.tags.each do |tag|
+                  = link_to tag.name, schools_path(tag_id: tag.id)
+              %td= link_to "More info", school
+    -else
+      No schools to show here.
   #map-view.col.s12
     #map
     #map-footer.panel
