@@ -1,6 +1,12 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.all
+    @tag = Tag.find(params[:tag_id].to_i) if params[:tag_id]
+
+    if @tag
+      @schools = @tag.schools
+    else
+      @schools = School.all
+    end
 
     schools_with_location = @schools.where.not(latitude: nil)
     gon.geocoded_hash = Gmaps4rails.build_markers(schools_with_location) do |school, marker|
@@ -24,4 +30,5 @@ class SchoolsController < ApplicationController
       marker.lng school.longitude
     end
   end
+
 end
