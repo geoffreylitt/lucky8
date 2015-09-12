@@ -22,29 +22,26 @@
           id: "map-show-link" do
           Map
 
-.row#main-row
-  #list-view.col.s12
-    -if @schools.count > 0
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Name
-            %th Average class size
-            %th Graduation rate
-            %th Tags
-            %th
-        %tbody
-          - @schools.each do |school|
-            %tr
-              %td= school.name
-              %td= school.avg_class_size
-              %td= school.four_yr_graduated
-              %td
-                - school.tags.each do |tag|
-                  = link_to tag.name, schools_path(tag_id: tag.id)
-              %td= link_to "More info", school
-    -else
-      No schools to show here.
+#list-view
+  -if @schools.count > 0
+    - @schools.in_groups_of(3).each do |row_of_schools|
+      .row
+        - row_of_schools.each do |school|
+          -if school
+            .col.s12.m6.l4
+              .card
+                =link_to school, class: "image-link" do
+                  .card-image.gradient
+                    =image_tag school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
+                    %span.card-title= school.name
+                .card-content
+                  %p= truncate(raw school.about)
+                  %p
+                    -school.tags.each do |tag|
+                      =link_to tag.name, schools_path(tag_id: tag.id)
+  -else
+    No schools to show here.
+.row
   #map-view.col.s12
     #map
     #map-footer.card

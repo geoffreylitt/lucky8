@@ -17,6 +17,7 @@
 //= require underscore
 //= require gmaps/google
 //= require materialize-sprockets
+//= require jquery.unveil
 //= require_tree .
 //*= require_self
 //*= require_directory .

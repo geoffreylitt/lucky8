@@ -49,6 +49,19 @@ footer {
   left: 0px;
 }
 
+.card a{
+  color: $link-color;
+  text-transform: none;
+
+  &:hover {
+    color: darken($link-color, 10%);
+  }
+
+  &.image-link {
+    margin: 0;
+  }
+}
+
 .card-image.gradient {
   &:after {
     content:'';
