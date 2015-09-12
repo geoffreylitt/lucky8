@@ -39,7 +39,7 @@ $ rake scrape
 ### Processing the school images
 Run the following to generate a wget script to download all the images.
 ```ruby
-School.all.each{|s| puts "wget \"#{s.image_url}\" -O assets/images/school_#{s.id}.jpg"};nil
+School.all.each{|s| puts "wget \"#{s.image_url}\" -O app/assets/images/school_#{s.id}.jpg"};nil
 ```
 
 Credits
