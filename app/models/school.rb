@@ -8,9 +8,13 @@ class School < ActiveRecord::Base
   after_validation :geocode, if: :address_changed?
 
   def total_size
-    school_size_9_grade +
-    school_size_10_grade +
-    school_size_11_grade +
-    school_size_12_grade
+    (school_size_9_grade || 0) +
+    (school_size_10_grade || 0) +
+    (school_size_11_grade || 0) +
+    (school_size_12_grade || 0)
+  end
+
+  def image_url
+    read_attribute(:image_url) || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
   end
 end

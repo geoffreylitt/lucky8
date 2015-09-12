@@ -63,6 +63,10 @@ footer {
 }
 
 .card-image.gradient {
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+
   &:after {
     content:'';
     position:absolute;
