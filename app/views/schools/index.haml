@@ -6,6 +6,7 @@
     - elsif @tag
       =link_to "< Back to all schools", schools_path
       %h1= @tag.name
+      %p= @tag.description
     - else
       %h1= "All schools"
 .row
