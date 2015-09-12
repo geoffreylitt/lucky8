@@ -14,7 +14,14 @@ class School < ActiveRecord::Base
     (school_size_12_grade || 0)
   end
 
+  # the image url for this school, with a fallback
   def image_url
     read_attribute(:image_url) || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
+  end
+
+  # A shorter about description.
+  # Cuts off anything after the first newline, then truncates what's left.
+  def short_about
+    about.split("<br>").first.truncate(180)
   end
 end
