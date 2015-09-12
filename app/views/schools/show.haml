@@ -5,7 +5,7 @@
 .row
   .col.s12.m6.l4
     .card
-      .card-image.gradient{style: "background-image: url(\"../../assets/school_#{@school.id}.jpg\")"}
+      .card-image.gradient{style: "background-image: url(#{ asset_path("school_" + @school.id.to_s + ".jpg") })"}
         %span.card-title= @school.name
       .card-content
         %p= raw @school.about
