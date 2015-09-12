@@ -1,26 +1,39 @@
+.index-hero
+  - if @starred
+    .row
+      .col.s12
+        =link_to "< Back to all schools", schools_path
+    .row
+      .col.s12.m6.offset-m3
+        %h1.page-title My Lucky 8
+        %p.page-subtitle
+          These are the schools you've starred. Keep adding and adjusting until you've got at least eight schools that fit you best. Next up: talk to your teacher, your family, your guidance counselor and make a plan to get these applications done!
+  - elsif @tag
+    .row
+      .col.s12
+        =link_to "< Back to all schools", schools_path
+    .row
+      .col.s12.m6.offset-m3
+        %h1.page-title= @tag.name
+        %p.page-subtitle= @tag.description
+  - else
+    .row
+      .col.s12.m6.offset-m3
+        %h1.page-title= "All schools"
+        %p.page-subtitle
+          Here are all the schools to choose from!
 .row
-  .col.s12
-    - if @starred
-      =link_to "< Back to all schools", schools_path
-      %h1 My Lucky 8
-    - elsif @tag
-      =link_to "< Back to all schools", schools_path
-      %h1= @tag.name
-      %p= @tag.description
-    - else
-      %h1= "All schools"
-.row
-  .col.s12
+  .col.s12.m6.offset-m3
     %ul.tabs
-      %li.tab.col.s6
+      %li.tab
         = link_to "#list-view",
           id: "list-show-link",
           class: :active do
-          List
-      %li.tab.col.s6
+          List view
+      %li.tab
         = link_to "#map-view",
           id: "map-show-link" do
-          Map
+          Map view
 
 #list-view
   -if @schools.count > 0

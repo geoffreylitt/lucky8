@@ -200,3 +200,18 @@ a .card-image.gradient:hover:after {
   display: none;
   background-color: white;
 }
+
+.index-hero {
+  padding-top: 20px;
+
+  h1.page-title {
+    color: $citizen-green;
+    font-size: 36px;
+    margin: 0;
+  }
+
+  p.page-subtitle {
+    @extend .grey-text;
+    @extend .darken-3;
+  }
+}
