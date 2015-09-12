@@ -5,8 +5,7 @@
 .row
   .col.s12.m6.l4
     .card
-      .card-image.gradient
-        =image_tag @school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
+      .card-image.gradient{style: "background-image: url(#{@school.image_url})"}
         %span.card-title= @school.name
       .card-content
         %p= raw @school.about
