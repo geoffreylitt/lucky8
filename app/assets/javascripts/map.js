@@ -26,7 +26,10 @@ var initMap = function () {
 
   function onMarkerClick(marker, event){
     return function(event){
-      console.log(marker);
+      $("#map-footer").show();
+      $("#map-footer .panel-body .name").text(marker.name);
+      $("#map-footer .panel-body .grad-rate").text("4-yr Graduate Rate: " + marker.gradRate);
+      $("#map-footer .panel-body .link").attr("href", "/schools/" + marker.id)
     }
   }
 }
