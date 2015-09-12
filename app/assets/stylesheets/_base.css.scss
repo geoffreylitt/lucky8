@@ -66,6 +66,7 @@ footer {
   height: 200px;
   width: 100%;
   background-size: cover;
+  text-align: right;
 
   &:after {
     content:'';
@@ -84,6 +85,11 @@ footer {
 
   span.card-title {
     z-index: 10000;
+  }
+
+  .star-button {
+    display: inline-block;
+    margin-top: 170px;
   }
 }
 
@@ -231,5 +237,5 @@ a .card-image.gradient:hover:after {
 
 .left-border-green {
   border-left: solid 4px $citizen-green;
-
 }
+

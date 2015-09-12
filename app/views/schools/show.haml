@@ -7,15 +7,13 @@
     .card
       .card-image.gradient{style: "background-image: url(#{ asset_path("school_" + @school.id.to_s + ".jpg") })"}
         %span.card-title= @school.name
+        =link_to toggle_save_school_path(id: @school.id), method: :post, class: "star-button btn-floating btn-large waves-effect waves-light white tooltipped", data: {position: "top", delay: "50", tooltip: saved(@school) ? "Unstar this school" : "Star this school"} do
+          -if saved(@school)
+            = image_tag "star-saved"
+          - else
+            = image_tag "star-unsaved"
       .card-content{class: "left-border-#{@school.color}"}
         %p= raw @school.about
-        %hr
-        %p
-          - if saved(@school)
-            In my Lucky 8!
-            =link_to "Remove from my Lucky 8", toggle_save_school_path(id: @school.id), method: :post
-          - else
-            =link_to "Add to my Lucky 8", toggle_save_school_path(id: @school.id), method: :post
 
   - if @school.address
     .col.s12.m6.l4
