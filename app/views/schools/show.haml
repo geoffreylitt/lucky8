@@ -9,9 +9,9 @@
         %span.card-title= @school.name
         =link_to toggle_save_school_path(id: @school.id), method: :post, class: "star-button btn-floating btn-large waves-effect waves-light white tooltipped", data: {position: "top", delay: "50", tooltip: saved(@school) ? "Unstar this school" : "Star this school"} do
           -if saved(@school)
-            = image_tag "star-saved"
+            = image_tag "star-saved.png"
           - else
-            = image_tag "star-unsaved"
+            = image_tag "star-unsaved.png"
       .card-content{class: "left-border-#{@school.color}"}
         %p= raw @school.about
 
