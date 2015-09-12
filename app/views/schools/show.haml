@@ -8,9 +8,16 @@
       .card-image.gradient
         =image_tag @school.image_url || "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lmspic.png"
         %span.card-title= @school.name
-      - if @school.about
-        .card-content
-          %p= raw @school.about
+      .card-content
+        %p= raw @school.about
+        %hr
+        %p
+          - if saved(@school)
+            In my Lucky 8!
+            =link_to "Remove from my Lucky 8", toggle_save_school_path(id: @school.id), method: :post
+          - else
+            =link_to "Add to my Lucky 8", toggle_save_school_path(id: @school.id), method: :post
+
   - if @school.address
     .col.s12.m6.l4
       .card.border-blue

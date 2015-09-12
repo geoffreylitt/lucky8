@@ -1,0 +1,10 @@
+%nav
+  .nav-wrapper
+    =link_to "Lucky 8", schools_path
+    %ul#nav-mobile.right
+      - if !user_signed_in?
+        %li= link_to "Sign in", new_user_session_path
+      - else
+        %li= link_to "View my Lucky 8", schools_path(starred: true)
+        %li= link_to "Sign out", destroy_user_session_path, method: :delete
+

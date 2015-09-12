@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :schools, only: [:index, :show]
+  resources :schools, only: [:index, :show] do
+    member do
+      post "toggle_save"
+    end
+  end
 end

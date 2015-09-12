@@ -1,8 +1,11 @@
 class SchoolsController < ApplicationController
   def index
+    @starred = params[:starred] == "true"
     @tag = Tag.find(params[:tag_id].to_i) if params[:tag_id]
 
-    if @tag
+    if @starred
+      @schools = current_user.schools
+    elsif @tag
       @schools = @tag.schools
     else
       @schools = School.all
@@ -35,4 +38,22 @@ class SchoolsController < ApplicationController
     gon.geocoded_hash
   end
   helper_method :geocoded_hash
+
+  def toggle_save
+    @school = School.find(params[:id])
+    if current_user
+      if current_user.schools.include? @school
+        current_user.schools.delete @school
+        flash[:notice] = "#{@school.name} was removed from your Lucky 8."
+      else
+        current_user.schools << @school
+        flash[:notice] = "#{@school.name} was added to your Lucky 8."
+      end
+
+      redirect_to @school
+    else
+      flash[:alert] = "You must be signed in to save schools."
+      redirect_to new_user_session_path
+    end
+  end
 end
