@@ -36,7 +36,11 @@ This rake task scrapes new stats for all schools from the Mass DESE website.
 ```
 $ rake scrape
 ```
-
+### Processing the school images
+Run the following to generate a wget script to download all the images.
+```ruby
+School.all.each{|s| puts "wget \"#{s.image_url}\" -O assets/images/school_#{s.id}.jpg"};nil
+```
 
 Credits
 -------
