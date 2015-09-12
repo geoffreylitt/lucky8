@@ -21,7 +21,7 @@
       .col.s12.m6.offset-m3
         %h1.page-title= "All schools"
         %p.page-subtitle
-          Here are all the schools to choose from!
+          Check out this list of schools in your area to find schools that are a good fit for you. Be sure to get more information and star your favorites.
 .row
   .col.s12.m6.offset-m3
     %ul.tabs
@@ -46,7 +46,7 @@
                 =link_to school, class: "image-link" do
                   .card-image.gradient{style: "background-image: url(#{ asset_path("school_" + school.id.to_s + ".jpg") })"}
                     %span.card-title= school.name
-                .card-content
+                .card-content{class: "left-border-#{school.color}"}
                   %p= raw school.short_about
                   %p
                     -school.tags.each do |tag|

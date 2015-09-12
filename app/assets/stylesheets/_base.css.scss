@@ -215,3 +215,21 @@ a .card-image.gradient:hover:after {
     @extend .darken-3;
   }
 }
+
+// Tag colors
+.left-border-blue {
+  border-left: solid 4px $citizen-blue;
+}
+
+.left-border-red {
+  border-left: solid 4px $citizen-red;
+}
+
+.left-border-gold {
+  border-left: solid 4px $citizen-gold;
+}
+
+.left-border-green {
+  border-left: solid 4px $citizen-green;
+
+}

@@ -24,4 +24,11 @@ class School < ActiveRecord::Base
   def short_about
     about.split("<br>").first.truncate(180)
   end
+
+  # An arbitrary but consistent color from the Citizens brand to
+  # use to represent this school
+  def color
+    colors = %w(green blue gold red)
+    colors[(name.length) % 4]
+  end
 end
