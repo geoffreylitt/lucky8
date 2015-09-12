@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829175202) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150912185008) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,9 +24,9 @@ ActiveRecord::Schema.define(version: 20150829175202) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -46,8 +43,8 @@ ActiveRecord::Schema.define(version: 20150829175202) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -97,29 +94,30 @@ ActiveRecord::Schema.define(version: 20150829175202) do
     t.integer "tag_id",    null: false
   end
 
-  add_index "schools_tags", ["school_id", "tag_id"], name: "index_schools_tags_on_school_id_and_tag_id", using: :btree
-  add_index "schools_tags", ["tag_id", "school_id"], name: "index_schools_tags_on_tag_id_and_school_id", using: :btree
+  add_index "schools_tags", ["school_id", "tag_id"], name: "index_schools_tags_on_school_id_and_tag_id"
+  add_index "schools_tags", ["tag_id", "school_id"], name: "index_schools_tags_on_tag_id_and_school_id"
 
   create_table "schools_types", id: false, force: true do |t|
     t.integer "school_id"
     t.integer "type_id"
   end
 
-  add_index "schools_types", ["school_id"], name: "index_schools_types_on_school_id", using: :btree
-  add_index "schools_types", ["type_id"], name: "index_schools_types_on_type_id", using: :btree
+  add_index "schools_types", ["school_id"], name: "index_schools_types_on_school_id"
+  add_index "schools_types", ["type_id"], name: "index_schools_types_on_type_id"
 
   create_table "schools_users", id: false, force: true do |t|
     t.integer "school_id", null: false
     t.integer "user_id",   null: false
   end
 
-  add_index "schools_users", ["school_id", "user_id"], name: "index_schools_users_on_school_id_and_user_id", using: :btree
-  add_index "schools_users", ["user_id", "school_id"], name: "index_schools_users_on_user_id_and_school_id", using: :btree
+  add_index "schools_users", ["school_id", "user_id"], name: "index_schools_users_on_school_id_and_user_id"
+  add_index "schools_users", ["user_id", "school_id"], name: "index_schools_users_on_user_id_and_school_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "types", force: true do |t|
@@ -145,7 +143,7 @@ ActiveRecord::Schema.define(version: 20150829175202) do
     t.boolean  "admin"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
