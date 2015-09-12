@@ -3,7 +3,6 @@ var initMap = function () {
   var handler = Gmaps.build('Google');
 
   handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
-
     markers_json = gon.geocoded_hash;
     markers = _.map(markers_json, function(marker_json){
       marker = handler.addMarker(marker_json);
@@ -28,7 +27,7 @@ var initMap = function () {
     return function(event){
       $("#map-footer").show();
       $("#map-footer .panel-body .name").text(marker.name);
-      $("#map-footer .panel-body .grad-rate").text("4-yr Graduate Rate: " + marker.gradRate);
+      $("#map-footer .panel-body .grad-rate").text("4-yr Graduation Rate: " + marker.gradRate);
       $("#map-footer .panel-body .link").attr("href", "/schools/" + marker.id)
     }
   }
@@ -36,6 +35,7 @@ var initMap = function () {
 
 $(document).ready(function() {
   $('ul.tabs').tabs();
+  initMap();
 
   // When the map tab is clicked, poll every 100ms until the #map div is visible
   // and then render the map. This is hacky but works. Ideas for better ways:

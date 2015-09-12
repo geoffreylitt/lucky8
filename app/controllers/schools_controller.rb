@@ -25,10 +25,14 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
 
     schools_with_location = School.where(id: @school.id).where.not(latitude: nil)
-    @geocoded_hash = Gmaps4rails.build_markers(schools_with_location) do |school, marker|
+    gon.geocoded_hash = Gmaps4rails.build_markers(schools_with_location) do |school, marker|
       marker.lat school.latitude
       marker.lng school.longitude
     end
   end
 
+  def geocoded_hash
+    gon.geocoded_hash
+  end
+  helper_method :geocoded_hash
 end

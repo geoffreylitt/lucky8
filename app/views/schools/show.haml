@@ -16,7 +16,7 @@
       .card.border-blue
         .card-content
           %span.card-title.orange-text Location
-          - if @geocoded_hash.any?
+          - if geocoded_hash.any?
             %p
               #small-map-view
                 #map
