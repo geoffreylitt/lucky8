@@ -1,13 +1,22 @@
-%ul.tabs
-  %li.tab.col.s6
-    = link_to "#list-view",
-      id: "list-show-link",
-      class: :active do
-      List
-  %li.tab.col.s6
-    = link_to "#map-view",
-      id: "map-show-link" do
-      Map
+.row
+  .col.s12
+    - if @tag
+      =link_to "< Back to all schools", schools_path
+      %h1= @tag.name
+    - else
+      %h1= "All schools"
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s6
+        = link_to "#list-view",
+          id: "list-show-link",
+          class: :active do
+          List
+      %li.tab.col.s6
+        = link_to "#map-view",
+          id: "map-show-link" do
+          Map
 
 .row#main-row
   #list-view.col.s12
@@ -17,6 +26,7 @@
           %th Name
           %th Average class size
           %th Graduation rate
+          %th Tags
           %th
       %tbody
         - @schools.each do |school|
@@ -24,6 +34,9 @@
             %td= school.name
             %td= school.avg_class_size
             %td= school.four_yr_graduated
+            %td
+              - school.tags.each do |tag|
+                = link_to tag.name, schools_path(tag_id: tag.id)
             %td= link_to "More info", school
   #map-view.col.s12
     #map
