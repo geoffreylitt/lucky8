@@ -6,6 +6,12 @@ class SchoolsController < ApplicationController
     gon.geocoded_hash = Gmaps4rails.build_markers(schools_with_location) do |school, marker|
       marker.lat school.latitude
       marker.lng school.longitude
+      marker.title school.name
+      marker.json({
+        id: school.id,
+        name: school.name,
+        gradRate: school.four_yr_graduated
+      })
     end
   end
 

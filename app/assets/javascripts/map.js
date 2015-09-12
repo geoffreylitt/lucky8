@@ -1,12 +1,34 @@
 var initMap = function () {
   var mapOptions = { maxZoom: 16 }
   var handler = Gmaps.build('Google');
+
   handler.buildMap({ provider: mapOptions, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(gon.geocoded_hash);
+
+    markers_json = gon.geocoded_hash;
+    markers = _.map(markers_json, function(marker_json){
+      marker = handler.addMarker(marker_json);
+      _.extend(marker, marker_json);
+
+      google.maps.event.addListener(
+        marker.getServiceObject(),
+        "click",
+        onMarkerClick(marker, event)
+      )
+      
+      return marker;
+    });
+
+    // markers = handler.addMarkers(gon.geocoded_hash);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(12);
   });
+
+  function onMarkerClick(marker, event){
+    return function(event){
+      console.log(marker);
+    }
+  }
 }
 
 $(document).ready(function() {
