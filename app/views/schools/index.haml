@@ -34,7 +34,7 @@
                   .card-image.gradient{style: "background-image: url(#{school.image_url})"}
                     %span.card-title= school.name
                 .card-content
-                  %p= raw school.about
+                  %p= raw school.short_about
                   %p
                     -school.tags.each do |tag|
                       =link_to tag.name, schools_path(tag_id: tag.id)
