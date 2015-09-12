@@ -5,10 +5,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :schools, only: [:index, :show] do
-    collection do
-      get "map"
-      get "list"
-    end
-  end
+  resources :schools, only: [:index, :show]
 end
