@@ -41,6 +41,11 @@ Run the following to generate a wget script to download all the images.
 ```ruby
 School.all.each{|s| puts "wget \"#{s.image_url}\" -O app/assets/images/school_#{s.id}.jpg"};nil
 ```
+Download all images in the `app/assets/images` folder and resize:
+
+```bash
+mogrify -resize 640x640 app/assets/images/school_*.jpg
+```
 
 Credits
 -------
