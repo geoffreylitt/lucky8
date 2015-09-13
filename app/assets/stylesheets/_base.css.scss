@@ -220,6 +220,12 @@ a .card-image.gradient:hover:after {
     @extend .grey-text;
     @extend .darken-3;
   }
+
+  img.title-star {
+    height: 70px;
+    margin-left: -10px;
+    vertical-align: bottom;
+  }
 }
 
 // Tag colors

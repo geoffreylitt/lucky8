@@ -3,7 +3,9 @@
     = render partial: "shared/back_link"
     .row
       .col.s12.m6.offset-m3
-        %h1.page-title My Lucky 8
+        %h1.page-title
+          =image_tag "star-unsaved.png", class: "title-star"
+          %span.orange-text My starred schools
         %p.page-subtitle
           These are the schools you've starred. Keep adding and adjusting until you've got at least eight schools that fit you best. Next up: talk to your teacher, your family, your guidance counselor and make a plan to get these applications done!
   - elsif @tag
