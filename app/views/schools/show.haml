@@ -4,7 +4,7 @@
 
 .row
   .col.s12.m6.l4
-    .card
+    .card.with-star
       .card-image.gradient{style: "background-image: url(#{ asset_path("school_" + @school.id.to_s + ".jpg") })"}
         %span.card-title= @school.name
         =link_to toggle_save_school_path(id: @school.id), method: :post, class: "star-button btn-floating btn-large waves-effect waves-light white tooltipped", data: {position: "top", delay: "50", tooltip: saved(@school) ? "Unstar this school" : "Star this school"} do

@@ -103,6 +103,10 @@ a .card-image.gradient:hover:after {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 
+.card.with-star .card-content {
+  padding-top: 35px;
+}
+
 .back-link {
   display: block;
   margin: 10px auto;
