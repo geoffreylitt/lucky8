@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     current_user && current_user.schools.include?(school)
   end
   helper_method :saved
+
+  def after_sign_in_path_for(user)
+    schools_path
+  end
 end
