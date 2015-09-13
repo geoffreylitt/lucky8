@@ -21,10 +21,24 @@ img.citizen-logo {
   margin: 0 auto;
 }
 
-p.welcome-message {
+.welcome-message {
+  margin-bottom: 30px;
+}
+
+.sign-in-btn {
+  margin-bottom: 10px;
+}
+
+.guest-btn {
   margin-top: 10px;
-  max-width: 200px; // to align with logo
-  margin: auto;
+}
+
+.citizen-blue {
+  background-color: $citizen-blue;
+
+  &:hover {
+    background-color: darken($citizen-blue, 10%);
+  }
 }
 
 footer {

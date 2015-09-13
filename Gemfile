@@ -18,6 +18,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'geocoder'
 gem 'gon'
+gem 'redcarpet'
 
 gem 'materialize-sass'
 

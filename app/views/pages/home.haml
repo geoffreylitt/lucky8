@@ -1,12 +1,21 @@
 .row
   .col.s12.m6.offset-m3.l4.offset-l4
     =image_tag "lucky.png", class: "lucky"
-    .center-align
-      %p.welcome-message
-        Hi there! My name is Lucky, and I'll be your guide to choosing your high schools in Boston!
+    .welcome-message
+      :markdown
+        Hi! My name is Lucky, and I'll be helping you explore Boston high schools.
 
-      %p
-        = link_to "Let's start >>", schools_path, class: "btn blue darken-4"
+        When you know better, you do better. Where you go to high school impacts you and the odds that you will graduate and go on to college.
+
+        You can be successful at any school but picking the right school increases the odds that you'll achieve your goals. Use this information, but it is still up to you to choose wisely and put in the work once you get to high school.
+
+    %p.center-align
+      = link_to "Sign in", new_user_session_path, class: "sign-in-btn btn citizen-blue"
+      %br
+      or
+      %br
+      = link_to "View as guest", schools_path, class: "guest-btn btn grey lighten-1"
+
 
     %footer
       %p.center-align
