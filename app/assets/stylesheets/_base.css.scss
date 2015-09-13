@@ -90,6 +90,7 @@ footer {
   .star-button {
     display: inline-block;
     margin-top: 170px;
+    z-index: 10001; // put on top of school name
   }
 }
 
