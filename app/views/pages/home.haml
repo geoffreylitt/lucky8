@@ -9,12 +9,17 @@
 
         You can be successful at any school but picking the right school increases the odds that you'll achieve your goals. Use this information, but it is still up to you to choose wisely and put in the work once you get to high school.
 
-    %p.center-align
-      = link_to "Sign in", new_user_session_path, class: "sign-in-btn btn citizen-blue"
-      %br
-      or
-      %br
-      = link_to "View as guest", schools_path, class: "guest-btn btn grey lighten-1"
+      %p
+      - if signed_in?
+        .center-align
+          = link_to "View schools", schools_path, class: "btn citizen-blue"
+      - else
+        .center-align
+          = link_to "Sign in", new_user_session_path, class: "sign-in-btn btn citizen-blue"
+          %br
+          or
+          %br
+          = link_to "View as guest", schools_path, class: "guest-btn btn grey lighten-1"
 
 
     %footer
