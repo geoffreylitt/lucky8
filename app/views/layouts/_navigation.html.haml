@@ -10,6 +10,6 @@
           %li
             = link_to schools_path(starred: true), class: "orange-text" do
               = image_tag "star-unsaved.png", class: "nav-image"
-              My stars (#{current_user.schools.count})
+              My schools (#{current_user.schools.count})
           %li= link_to "Sign out", destroy_user_session_path, method: :delete, class: "orange-text"
 

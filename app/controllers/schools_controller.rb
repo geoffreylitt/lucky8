@@ -45,10 +45,10 @@ class SchoolsController < ApplicationController
     if current_user
       if current_user.schools.include? @school
         current_user.schools.delete @school
-        flash[:notice] = "#{@school.name} was removed from your Lucky 8."
+        flash[:notice] = "You starred #{@school.name}!"
       else
         current_user.schools << @school
-        flash[:notice] = "#{@school.name} was added to your Lucky 8."
+        flash[:notice] = "You unstarred #{@school.name}."
       end
 
       redirect_to @school
