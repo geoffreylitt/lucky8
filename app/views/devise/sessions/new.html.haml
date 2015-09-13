@@ -1,27 +1,54 @@
-.authform
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
-    %h3 Sign in
-    %p
-      - if params[:user_type] == "student"
-        Enter your BPS email and the password your teacher gave you.
-      - if params[:user_type] == "family"
-        Enter your student's BPS email and the password they received from their teacher.
-      - if params[:user_type] == "teacher"
-        Enter your email and password.
-    = devise_error_messages!
-    .form-group
-      - if devise_mapping.registerable?
-        = link_to 'Sign up', new_registration_path(resource_name), class: 'right'
-      = f.label :email
-      = f.email_field :email, :autofocus => true, class: 'form-control'
-    .form-group
-      - if devise_mapping.recoverable?
-        = link_to "Forgot password?", new_password_path(resource_name), class: 'right'
-      = f.label :password
-      = f.password_field :password, class: 'form-control'
-    = f.submit 'Sign in', :class => 'button right'
-    - if devise_mapping.rememberable?
-      .checkbox{:style => "width:150px"}
-        %label
-          = f.check_box :remember_me
-          Remember me
+%br
+%br
+.row
+  .col.s12.m6.offset-m3.l4.offset-l4
+    %ul.tabs
+      %li.tab
+        = link_to "#sign-in",
+          id: "sign-in-link",
+          class: :active do
+          Sign in
+      %li.tab
+        = link_to "#sign-up",
+          id: "sign-up-link" do
+          I'm new here
+
+    .authform#sign-in
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
+        %p.form-instructions
+          Sign in to your existing account.
+          %br
+          %a#show-sign-up{href: "#"} Don't have an account?
+        %p
+          - if params[:user_type] == "student"
+            Enter your BPS email and the password your teacher gave you.
+          - if params[:user_type] == "family"
+            Enter your student's BPS email and the password they received from their teacher.
+          - if params[:user_type] == "teacher"
+            Enter your email and password.
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          = f.email_field :email, :autofocus => true, class: 'form-control'
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control'
+        = f.submit 'Sign in', :class => 'btn blue right'
+
+    .authform#sign-up
+      %p.form-instructions Sign up for a new account.
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :name
+          = f.text_field :name, :autofocus => true, class: 'form-control'
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control'
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control'
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control'
+        = f.submit 'Sign up', :class => 'btn blue right'
