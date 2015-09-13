@@ -8,7 +8,7 @@ class SchoolsController < ApplicationController
     elsif @tag
       @schools = @tag.schools
     else
-      @schools = School.all
+      @schools = School.order("RANDOM()")
     end
 
     schools_with_location = @schools.where.not(latitude: nil)
