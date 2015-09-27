@@ -45,13 +45,11 @@ class SchoolsController < ApplicationController
     if current_user
       if current_user.schools.include? @school
         current_user.schools.delete @school
-        flash[:notice] = "You starred #{@school.name}!"
+        render json: { status: 'unsave successful' }
       else
         current_user.schools << @school
-        flash[:notice] = "You unstarred #{@school.name}."
+        render json: { status: 'save successful' }
       end
-
-      redirect_to @school
     else
       flash[:alert] = "You'll need to sign in to save that school!"
       redirect_to new_user_session_path
