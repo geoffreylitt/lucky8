@@ -1,22 +1,19 @@
 Lucky8
 ================
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+![](app/assets/images/lucky_small.png)
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+Hi! My name is Lucky, and I'll be helping you explore Boston high schools.
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+When you know better, you do better. Where you go to high school impacts you and
+the odds that you will graduate and go on to college.
 
-Problems? Issues?
------------
+You can be successful at any school but picking the right school increases the
+odds that you'll achieve your goals. Use this information, but it is still up to
+you to choose wisely and put in the work once you get to high school.
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+[![View Schools](app/assets/images/view_schools_button_readme.png)](http://lucky8.herokuapp.com/schools)
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
 
 Ruby on Rails
 -------------
