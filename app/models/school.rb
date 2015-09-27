@@ -31,4 +31,26 @@ class School < ActiveRecord::Base
     colors = %w(green blue gold red)
     colors[(name.length) % 4]
   end
+
+  # Whether there is any population information for this school
+  def population_info_present?
+    school_population_hispanic || 
+    school_population_african_american ||
+    school_population_white ||
+    school_population_asian ||
+    school_population_multi_race_non_hispanic
+  end
+
+  # Whether there is any 'other key indicators' information for the school
+  def other_key_indicator_info_present?
+    attendance_rate ||
+    avg_class_size ||
+    ell_percentage
+  end
+
+  def post_grad_intentions_info_present?
+    post_grad_four_yr_college ||
+    post_grad_two_yr_college ||
+    post_grad_unknown
+  end
 end

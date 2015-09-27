@@ -15,147 +15,151 @@
       .card-content{class: "left-border-#{@school.color}"}
         %p= raw @school.about
 
-  - if @school.address
+  - if @school.address && geocoded_hash.any?
     .col.s12.m6.l4
       .card.border-blue
         .card-content
           %span.card-title.orange-text Location
-          - if geocoded_hash.any?
-            %p
-              #small-map-view
-                #map
+          %p
+            #small-map-view
+              #map
           %p= @school.address
 .row
   .col.s12.m6.l4
-    .card.border-green
-      .card-content
-        .big-number
-          .little-card-title Graduation rate
-          %span.number= @school.four_yr_graduated
-          %span.percent-sign %
-          %span.label graduated
-        .card-icon
-          = image_tag "graduated.png"
+    - if @school.four_yr_graduated && @school.four_yr_graduated > 0
+      .card.border-green
+        .card-content
+          .big-number
+            .little-card-title Graduation rate
+            %span.number= @school.four_yr_graduated
+            %span.percent-sign %
+            %span.label graduated
+          .card-icon
+            = image_tag "graduated.png"
 
-        %a.card-details-toggle.grey-text{ href: "#" } Show details v
-        .card-details
-          .little-numbers
-            .little-number
-              .number= percentage(@school.four_yr_dropped_out)
-              .label
-                dropped out
-            .little-number
-              .number= percentage(@school.four_yr_still_in_school)
-              .label
-                still in school
-            .little-number
-              .number= percentage(@school.four_yr_ged)
-              .label
-                GED
+          %a.card-details-toggle.grey-text{ href: "#" } Show details v
+          .card-details
+            .little-numbers
+              .little-number
+                .number= percentage(@school.four_yr_dropped_out)
+                .label
+                  dropped out
+              .little-number
+                .number= percentage(@school.four_yr_still_in_school)
+                .label
+                  still in school
+              .little-number
+                .number= percentage(@school.four_yr_ged)
+                .label
+                  GED
 
   .col.s12.m6.l4
-    .card.border-gold
-      .card-content
-        .big-number
-          .little-card-title School size
-          %span.number= @school.total_size
-          %span.label students
-        .card-icon
-          = image_tag "school.png"
+    - if @school.total_size > 0
+      .card.border-gold
+        .card-content
+          .big-number
+            .little-card-title School size
+            %span.number= @school.total_size
+            %span.label students
+          .card-icon
+            = image_tag "school.png"
 
-        %a.card-details-toggle.grey-text{ href: "#" } Show details v
-        .card-details
+          %a.card-details-toggle.grey-text{ href: "#" } Show details v
+          .card-details
+            .little-numbers
+              .little-number
+                .number= @school.school_size_9_grade
+                .label
+                  9th
+                  %br
+                  Grade
+              .little-number
+                .number= @school.school_size_10_grade
+                .label
+                  10th
+                  %br
+                  Grade
+              .little-number
+                .number= @school.school_size_11_grade
+                .label
+                  11th
+                  %br
+                  Grade
+              .little-number
+                .number= @school.school_size_12_grade
+                .label
+                  12th
+                  %br
+                  Grade
+  .col.s12.m6.l4
+    - if @school.post_grad_intentions_info_present?
+      .card.border-blue
+        .card-content
+          .big-number
+            .little-card-title Post-graduate intentions
           .little-numbers
             .little-number
-              .number= @school.school_size_9_grade
+              .number= percentage(@school.post_grad_four_yr_college)
               .label
-                9th
-                %br
-                Grade
+                Four-year college
             .little-number
-              .number= @school.school_size_10_grade
+              .number= percentage(@school.post_grad_two_yr_college)
               .label
-                10th
-                %br
-                Grade
+                Two-year college
             .little-number
-              .number= @school.school_size_11_grade
+              .number= percentage(@school.post_grad_unknown)
               .label
-                11th
-                %br
-                Grade
-            .little-number
-              .number= @school.school_size_12_grade
-              .label
-                12th
-                %br
-                Grade
-  .col.s12.m6.l4
-    .card.border-blue
-      .card-content
-        .big-number
-          .little-card-title Post-graduate intentions
-        .little-numbers
-          .little-number
-            .number= percentage(@school.post_grad_four_yr_college)
-            .label
-              Four-year college
-          .little-number
-            .number= percentage(@school.post_grad_two_yr_college)
-            .label
-              Two-year college
-          .little-number
-            .number= percentage(@school.post_grad_unknown)
-            .label
-              Unknown
+                Unknown
 
 .row
   .col.s12.m6.l4
-    .card.border-red
-      .card-content
-        .big-number
-          .little-card-title School population
-        .card-icon= image_tag "students.png"
-        .little-numbers
-          .little-number
-            .number= percentage(@school.school_population_hispanic)
-            .label
-              Hispanic
-          .little-number
-            .number= percentage(@school.school_population_african_american)
-            .label
-              African American
-          .little-number
-            .number= percentage(@school.school_population_white)
-            .label
-              White
-          .little-number
-            .number= percentage(@school.school_population_asian)
-            .label
-              Asian
-          .little-number
-            .number= percentage(@school.school_population_multi_race_non_hispanic)
-            .label
-              Multi-race, Non-Hispanic
+    - if @school.population_info_present?
+      .card.border-red
+        .card-content
+          .big-number
+            .little-card-title School population
+          .card-icon= image_tag "students.png"
+          .little-numbers
+            .little-number
+              .number= percentage(@school.school_population_hispanic)
+              .label
+                Hispanic
+            .little-number
+              .number= percentage(@school.school_population_african_american)
+              .label
+                African American
+            .little-number
+              .number= percentage(@school.school_population_white)
+              .label
+                White
+            .little-number
+              .number= percentage(@school.school_population_asian)
+              .label
+                Asian
+            .little-number
+              .number= percentage(@school.school_population_multi_race_non_hispanic)
+              .label
+                Multi-race, Non-Hispanic
 
   .col.s12.m6.l4
-    .card.border-gold
-      .card-content
-        .big-number
-          .little-card-title Other key indicators
-        .little-numbers
-          .little-number.wide
-            .number= percentage(@school.attendance_rate)
-            .label
-              Attendance rate
-          .little-number.wide
-            .number= @school.avg_class_size
-            .label
-              Average class size
-          .little-number.wide
-            .number= percentage(@school.ell_percentage)
-            .label
-              ELL students
+    - if @school.other_key_indicator_info_present?
+      .card.border-gold
+        .card-content
+          .big-number
+            .little-card-title Other key indicators
+          .little-numbers
+            .little-number.wide
+              .number= percentage(@school.attendance_rate)
+              .label
+                Attendance rate
+            .little-number.wide
+              .number= @school.avg_class_size
+              .label
+                Average class size
+            .little-number.wide
+              .number= percentage(@school.ell_percentage)
+              .label
+                ELL students
 
   - if @school.how_to_apply.present?
     .col.s12.m6.l4
