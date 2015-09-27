@@ -1,9 +1,18 @@
 %nav.white.orange-text
   .nav-wrapper
     .container
-      =link_to schools_path do
+      =link_to "#!" do
         =image_tag "lucky.png", class: "nav-image"
-      %ul#nav-mobile.right
+      = link_to "#",
+        class: "orange-text button-collapse",
+        "data-activates" => "nav-mobile-sidebar" do
+        %i.material-icons
+          menu
+      %ul#nav-mobile.right.hide-on-small-only
+        %li
+          = link_to schools_path, class: "orange-text" do
+            All schools
+
         - if !user_signed_in?
           %li= link_to "Sign in", new_user_session_path, class: "orange-text"
         - else
@@ -11,5 +20,18 @@
             = link_to schools_path(starred: true), class: "orange-text" do
               = image_tag "star-unsaved.png", class: "nav-image"
               My schools (#{current_user.schools.count})
+          %li= link_to "Sign out", destroy_user_session_path, method: :delete, class: "orange-text"
+      %ul.side-nav#nav-mobile-sidebar
+        %li
+          = link_to schools_path, class: "orange-text" do
+            All schools
+
+        - if !user_signed_in?
+          %li= link_to "Sign in", new_user_session_path, class: "orange-text"
+        - else
+          %li
+            = link_to schools_path(starred: true), class: "orange-text" do
+              My schools (#{current_user.schools.count})
+              = image_tag "star-unsaved.png", class: "nav-image"
           %li= link_to "Sign out", destroy_user_session_path, method: :delete, class: "orange-text"
 
