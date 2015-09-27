@@ -1,5 +1,5 @@
 $(document).ready(function () {
   $(".back-link").click(function (){
-    history.back();
+    history.go(-1);
   });
 });
