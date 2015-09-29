@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  actions :index, :show
+
   index do
     id_column
     column :name
@@ -10,6 +12,10 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
+      row :sign_in_count
+      row :current_sign_in_at
+      row :last_sign_in_at
+      row :created_at
     end
 
     panel "Saved Schools" do
