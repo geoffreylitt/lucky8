@@ -1,4 +1,12 @@
 .index-hero
+  .row
+    .col.s12.m6.offset-m3
+      %form
+        .input-field#the-basics
+          %input.typeahead#search-field{ type: "search", required: true, maxlength: 20, placeholder: "Search all schools..." }
+          %label#search-field-label{ for: "search-field" }
+            %i.mdi-action-search.small{ style: "color: orange;" }
+  
   - if @starred
     = render partial: "shared/back_link"
     .row

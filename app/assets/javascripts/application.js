@@ -18,6 +18,10 @@
 //= require gmaps/google
 //= require materialize-sprockets
 //= require jquery.unveil
+//= require typeahead.jquery
+//= require typeahead.bundle.min
+//= require bloodhound
+//= require handlebars
 //= require_tree .
 //*= require_self
 //*= require_directory .

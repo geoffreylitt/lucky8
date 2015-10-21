@@ -8,7 +8,7 @@ class SchoolsController < ApplicationController
     elsif @tag
       @schools = @tag.schools
     else
-      @schools = School.order("RANDOM()")
+      @schools = School.includes(:tags).order("RANDOM()")
     end
 
     schools_with_location = @schools.where.not(latitude: nil)
@@ -22,6 +22,14 @@ class SchoolsController < ApplicationController
         about: school.about,
         tags: school.tags.pluck(:id, :name)
       })
+    end
+
+    # Used for the typeahead searchbox
+    gon.school_names = School.all.map do |school|
+      {
+        value: school.name,
+        url: school_path(school)
+      }
     end
   end
 

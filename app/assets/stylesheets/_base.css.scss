@@ -264,3 +264,63 @@ a .card-image.gradient:hover:after {
   border-left: solid 4px $citizen-green;
 }
 
+
+// Search box
+.input-field input[type=search] {
+  line-height: inherit;
+  padding-left: 3rem;
+}
+
+.input-field {
+  position: relative;
+  max-width: 300px;
+}
+
+#search-field-label {
+  top: 0px;
+}
+
+// Twitter typeahead
+.tt-hint {
+  color: #999
+  }
+.tt-dataset {
+  width: 400px;
+  margin-top: 3px;
+  padding: 8px 8px;
+}
+
+.tt-menu {
+  width: 422px;
+  margin-top: 3px;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  line-height: 24px;
+  color: black;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion p {
+  margin: 0;
+
+  text-align: left;
+}
+
+.twitter-typeahead {
+	width: 100%;
+}

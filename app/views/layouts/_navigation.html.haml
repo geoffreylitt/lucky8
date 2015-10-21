@@ -2,13 +2,20 @@
   .nav-wrapper
     .container
       =link_to schools_path do
-        =image_tag "lucky.png", class: "nav-image"
+        =image_tag "lucky.png", class: "left nav-image hide-on-med-and-down lucky-image"
       = link_to "#",
         class: "orange-text button-collapse",
         "data-activates" => "nav-mobile-sidebar" do
         %i.material-icons
           menu
-      %ul#nav-mobile.right.hide-on-small-only
+      -# .left
+      -#   %form
+      -#     .input-field#the-basics
+      -#       %input.typeahead#search-field{ type: "search", required: true, maxlength: 20, placeholder: "Search schools..." }
+      -#       %label{ for: "search-field" }
+      -#         %i.mdi-action-search.small{ style: "color: orange;" }
+
+      %ul#nav-mobile.right.hide-on-med-and-down
         %li
           = link_to schools_path, class: "orange-text" do
             All schools
