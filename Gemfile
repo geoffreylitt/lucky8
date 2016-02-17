@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.4"
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_editor'
 gem 'rails', '4.1.5'
