@@ -16,9 +16,7 @@ you to choose wisely and put in the work once you get to high school.
 
 Getting Started for Teachers
 -------------
-This app help you and your students look up high school informations in Boston area.
-To help your students understand how this app works, we created a scavenger hunt as lesson plan for you.
-You can print out the sheet below, and ask students to fill out the numbers in 10-15 mins.
+This app can help you and your students look up high school information in the Boston area. To help your students understand how this app works, we created a scavenger hunt as lesson plan for you. You can print out the sheet below, and ask students to fill out the numbers in 20-30 mins. To make it less tedious, you could fill in some of the blanks ahead of time.
 [Scavenger Hunt Lesson Plan](https://github.com/geoffreylitt/lucky8/raw/master/ScavengerHunt_HSGuideSite.docx)
 
 
