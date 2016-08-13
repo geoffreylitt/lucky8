@@ -12,7 +12,7 @@ ActiveAdmin.register School do
       f.input :about, as: :html_editor
       f.input :how_to_apply, as: :html_editor
       f.input :image_url, hint: "A URL for an image to display on this school's information page"
-      f.input :org_id_number, label: "Org ID Number", hint: "The ID number for this school on the Mass DESE school profiles site (to allow for automatic data scraping)"
+      f.input :org_id_number, label: "Org ID Number", hint: "The ID number for this school on the Mass DESE school profiles site. Leave this blank if this is a private school, or for any other school where you don't want data to be automatically scraped."
       f.input :tags, as: :check_boxes, input_html: {multiple: true}
     end
 
