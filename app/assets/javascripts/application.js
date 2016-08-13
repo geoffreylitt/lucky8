@@ -16,6 +16,7 @@
 //= require_tree .
 //= require underscore
 //= require gmaps/google
+//= require markerclusterer
 //= require materialize-sprockets
 //= require jquery.unveil
 //= require typeahead.jquery
